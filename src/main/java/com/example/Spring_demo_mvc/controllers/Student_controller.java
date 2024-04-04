@@ -54,6 +54,16 @@ public class Student_controller {
          std.setPassword(st.getPassword());
          return ResponseEntity.status(HttpStatus.CREATED).body(std);
      }
+     @GetMapping("/hell")
+     public Student hello(){
+        Student st=new Student();
+        st.setId(2);
+        st.setName("ramu");
+        st.setAddress("varchi");
+        st.setEmail("rahdv12@gmail.com");
+        st.setPassword("123456");
+        return st;
+     }
 
 
 }
