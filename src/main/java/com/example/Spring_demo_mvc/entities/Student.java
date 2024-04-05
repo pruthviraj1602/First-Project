@@ -17,5 +17,6 @@ public class Student {
     private String address;
     private String email;
     private String password;
+    private Boolean enable;
 
 }

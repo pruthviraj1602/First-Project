@@ -1,16 +1,21 @@
 package com.example.Spring_demo_mvc.controllers;
 
 import com.example.Spring_demo_mvc.entities.Student;
+import com.example.Spring_demo_mvc.services.IMPL.StudentServiceIMPL;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.JstlUtils;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/get")
 public class Student_controller {
+    @Autowired
+    private StudentServiceIMPL stuim;
 
     @GetMapping("/test")
     public ResponseEntity<?> testAPI(){
@@ -65,6 +70,16 @@ public class Student_controller {
         return st;
      }
 
+     @PostMapping("/register")
+     public Student registerStudent(@RequestBody Student Student){
+
+        return stuim.registerStudent(Student);
+ }
+
+ @GetMapping("/getmap/{id}")
+    public Student getStudent(@PathVariable Integer id ){
+      return stuim.getStudentById(id);
+ }
 
 }
 
