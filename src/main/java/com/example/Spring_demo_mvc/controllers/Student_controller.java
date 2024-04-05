@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.JstlUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -80,6 +81,20 @@ public class Student_controller {
     public Student getStudent(@PathVariable Integer id ){
       return stuim.getStudentById(id);
  }
+ @GetMapping("/getall")
+    public List<Student> getAllStudent(){
+        return stuim.getAllStudents();
+ }
+
+ @PutMapping("/updateStudent")
+ public Student updateStudent(@RequestBody Student Student){
+        return stuim.updateStudent(Student);
+ }
+ @DeleteMapping("/deleteStudent/{id}")
+ public Boolean deleteStudent(@PathVariable Integer id){
+        return stuim.deleteStudent(id);
+ }
+
 
 }
 

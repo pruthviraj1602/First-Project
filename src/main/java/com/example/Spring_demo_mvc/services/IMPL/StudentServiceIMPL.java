@@ -6,6 +6,8 @@ import com.example.Spring_demo_mvc.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentServiceIMPL implements StudentService {
     @Autowired
@@ -20,4 +22,28 @@ public class StudentServiceIMPL implements StudentService {
     public Student getStudentById(Integer id) {
         return sture.getStudentById(id);
     }
+
+    @Override
+    public List<Student> getAllStudents() {
+        return sture.getAllByEnable(false);
+    }
+
+    @Override
+    public Student updateStudent(Student stud) {
+
+        return sture.save(stud);
+    }
+
+    @Override
+    public Boolean deleteStudent(Integer id) {
+        Integer i = sture.deleteStudentById(id);
+        System.out.println("delete Value "+i);
+        if(i==0){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+
 }
